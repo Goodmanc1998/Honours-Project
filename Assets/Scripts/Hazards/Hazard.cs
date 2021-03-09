@@ -8,12 +8,20 @@ public class Hazard : MonoBehaviour
     public bool seen = false;
     public bool registered = false;
 
+    public GameManager.Hazards currHazard;
+
+    private void Awake()
+    { 
+        currHazard = GameManager.Hazards.Possible;
+    }
+
     virtual public void SeenHazard()
     {
         if(!seen)
         {
             seen = true;
-            GetComponent<Renderer>().material.color = Color.yellow;
+
+            GameManager.Instance.UpdatePlayerScore(currHazard, 2);
         }
     }
 
@@ -22,7 +30,9 @@ public class Hazard : MonoBehaviour
         if(!registered)
         {
             registered = true;
-            GetComponent<Renderer>().material.color = Color.green;
+            GameManager.Instance.UpdatePlayerScore(currHazard, 3);
         }
     }
+
+
 }

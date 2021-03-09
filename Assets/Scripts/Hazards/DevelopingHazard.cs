@@ -6,13 +6,17 @@ public class DevelopingHazard : Hazard
 {
 
     public float activeHazardTime = 0f;
-    public float maxHazardTime = 0f;
+    float maxHazardTime = 5f;
 
     public bool active = false;
+    bool sent = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        currHazard = GameManager.Hazards.Developing;
+
+        activeHazardTime = maxHazardTime;
 
     }
 
@@ -20,18 +24,20 @@ public class DevelopingHazard : Hazard
     void Update()
     {
 
-        if(GetComponent<Renderer>().isVisible)
-        {
-            active = true;
-        }
-
         if(active && !this.registered)
         {
-            if(activeHazardTime <= maxHazardTime)
+            if(activeHazardTime >= 0)
             {
-                activeHazardTime += Time.deltaTime;
+                activeHazardTime -= Time.deltaTime;
             }
         }
+
+        if(this.registered && !sent)
+        {
+            sent = true;
+            GameManager.Instance.UpdatePlayerScore(currHazard, Mathf.RoundToInt(activeHazardTime));
+        }
+
     }
 
     public void ActivateHazard()

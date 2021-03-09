@@ -5,11 +5,11 @@ using UnityEngine;
 public class HazardTrigger : MonoBehaviour
 {
 
-    DevelopingHazard devHazard;
+    public DevelopingHazard devHazard;
 
     private void Awake()
     {
-        if(devHazard != null)
+        if(devHazard == null)
         {
             devHazard = GameObject.FindGameObjectWithTag("DevelopingHazard").GetComponent<DevelopingHazard>();
         }
@@ -17,7 +17,7 @@ public class HazardTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             devHazard.ActivateHazard();
         }

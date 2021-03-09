@@ -14,10 +14,15 @@ public class UserDirectionChecker : MonoBehaviour
     public float centerViewTime;
     public float rightViewTime;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        GameManager.onGameEvent += UpdateScore;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.onGameEvent -= UpdateScore;
+
     }
 
     // Update is called once per frame
@@ -37,5 +42,15 @@ public class UserDirectionChecker : MonoBehaviour
             centerViewTime += Time.deltaTime;
         }
 
+    }
+
+    private void UpdateScore(GameEvents state)
+    {
+        if (state != GameEvents.GAMEEVENT_PLAYERFINISH)
+            return;
+
+        Vector3 LookingTimes = new Vector3(Mathf.RoundToInt(leftViewTime), Mathf.RoundToInt(centerViewTime), Mathf.RoundToInt(rightViewTime));
+
+        GameManager.Instance.UpdatePlayerDirection(LookingTimes);
     }
 }
