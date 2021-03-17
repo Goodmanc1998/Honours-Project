@@ -9,12 +9,15 @@ public class SavingToXML
     public static List<SaveData> LoadData(string fileName)
     {
 
-        if (!System.IO.File.Exists(fileName + ".xml"))
+        string directory = getDirectory();
+
+        
+        if (!System.IO.File.Exists(directory + fileName + ".xml"))
             return null;
 
         Debug.Log("Start Load");
 
-        XmlReader xmlReader = XmlReader.Create(fileName + ".xml");
+        XmlReader xmlReader = XmlReader.Create(directory + fileName + ".xml");
 
         List<SaveData> saves = new List<SaveData>();
 
@@ -58,13 +61,15 @@ public class SavingToXML
     {
         Debug.Log("Start Save");
 
+        string directory = getDirectory();
+
         XmlWriterSettings xmlSettings = new XmlWriterSettings();
 
         xmlSettings.Indent = true;
 
         Debug.Log("Start ");
 
-        XmlWriter  xmlWriter = XmlWriter.Create(fileName + ".xml", xmlSettings);
+        XmlWriter  xmlWriter = XmlWriter.Create(directory + fileName + ".xml", xmlSettings);
 
         Debug.Log("Created ");
 
@@ -121,7 +126,23 @@ public class SavingToXML
 
         Debug.Log("Finished");
 
-        GameManager.onGameEvent(GameEvents.GAMEEVENT_UPLOADFINISH);
+        GameManager.Instance.scene.ChangeScene();
 
+    }
+
+    public static string getDirectory()
+    {
+        string currentDir = "";
+
+        if(Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            currentDir = Application.dataPath + "/SavedData/";
+        }
+        else if(Application.platform == RuntimePlatform.Android)
+        {
+            currentDir = Application.persistentDataPath;
+        }
+
+        return currentDir;
     }
 }

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConnorTestScene>
+  <UserScore Dev="8" Pos="2" Area="4" x="2" y="7" z="0" />
+  <UserScore Dev="8" Pos="5" Area="4" x="1" y="8" z="0" />
+  <UserScore Dev="8" Pos="2" Area="4" x="0" y="9" z="0" />
+  <UserScore Dev="2" Pos="2" Area="1" x="0" y="9" z="0" />
+  <UserScore Dev="9" Pos="5" Area="4" x="0" y="9" z="0" />
+  <UserScore Dev="8" Pos="5" Area="3" x="3" y="6" z="0" />
+  <UserScore Dev="8" Pos="5" Area="2" x="0" y="8" z="1" />
+</ConnorTestScene>

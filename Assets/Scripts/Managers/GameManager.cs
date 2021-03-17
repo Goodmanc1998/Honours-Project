@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
 public enum GameEvents
 {
     GAMEEVENT_GAMESTART,
@@ -14,7 +16,7 @@ public class GameManager : MonoBehaviour
 {
     //Player
     private GameObject player;
-    private SceneChange scene;
+    public SceneChange scene;
 
 
     public Vector3 lookingDirections;
@@ -22,6 +24,10 @@ public class GameManager : MonoBehaviour
     public SaveData currScore = new SaveData();
 
     List<SaveData> currSaves = new List<SaveData>();
+
+    public Text dirText;
+
+
 
 
     //Hazard Types
@@ -62,6 +68,8 @@ public class GameManager : MonoBehaviour
         currSaves = SavingToXML.LoadData(scene.GetSceneName());
 
         GameManager.onGameEvent += Event;
+
+        //dirText.text = SavingToXML.getDirectory();
     }
 
 
@@ -93,6 +101,8 @@ public class GameManager : MonoBehaviour
 
     void Event(GameEvents gameEvent)
     {
+        Debug.Log(gameEvent.ToString());
+
         if (gameEvent == GameEvents.GAMEEVENT_UPLOADSTART)
         {
             SavingToXML.SaveToXML(scene.GetSceneName(), currScore, currSaves);
@@ -100,10 +110,13 @@ public class GameManager : MonoBehaviour
 
         if (gameEvent == GameEvents.GAMEEVENT_UPLOADFINISH)
         {
-            //scene.ChangeScene();
+            if (Application.platform == RuntimePlatform.Android)
+                scene.ChangeScene();
         }
 
     }
+
+
 
     
 }
