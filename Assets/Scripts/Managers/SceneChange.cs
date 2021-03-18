@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-
+    public Animator animator;
     public string newScene;
 
     // Start is called before the first frame update
@@ -21,6 +21,12 @@ public class SceneChange : MonoBehaviour
     }
 
     public void ChangeScene()
+    {
+        animator.SetTrigger("Fade");
+        
+    }
+
+    public void EndAnimation()
     {
         SceneManager.LoadScene(newScene);
     }

@@ -17,6 +17,8 @@ public class HazardTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Collision : " + other.name);
+
         if (other.gameObject.tag == "Player")
         {
             devHazard.ActivateHazard();

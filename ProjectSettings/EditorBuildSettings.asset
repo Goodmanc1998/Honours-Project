@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ViewData.unity
     guid: e043cc0deb0501a4aaa00b9b47fca0d8
+  - enabled: 1
+    path: Assets/Scenes/HazardSceneOne.unity
+    guid: 2438da6daf4b4a54884b562cfedb6a6a
   m_configObjects: {}

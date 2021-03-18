@@ -25,6 +25,8 @@ public class DisplaySavingData : MonoBehaviour
 
     public void displayLoadData()
     {
+        removeChildren();
+
         currSaves = SavingToXML.LoadData("ConnorTestScene");
 
         for (int i = 0; i < currSaves.Count; i++)
@@ -35,6 +37,16 @@ public class DisplaySavingData : MonoBehaviour
 
             newItem.SetListItem(currSaves[i]);
 
+        }
+    }
+
+    public void removeChildren()
+    {
+        for (int i = 0; i < listPanel.childCount; i++)
+        {
+            Transform child = listPanel.GetChild(i);
+
+            Destroy(child.gameObject);
         }
     }
 

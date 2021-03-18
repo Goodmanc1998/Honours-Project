@@ -25,11 +25,6 @@ public class GameManager : MonoBehaviour
 
     List<SaveData> currSaves = new List<SaveData>();
 
-    public Text dirText;
-
-
-
-
     //Hazard Types
     public enum Hazards
     {
@@ -63,13 +58,10 @@ public class GameManager : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
 
-        scene = gameObject.GetComponent<SceneChange>();
-
         currSaves = SavingToXML.LoadData(scene.GetSceneName());
 
         GameManager.onGameEvent += Event;
 
-        //dirText.text = SavingToXML.getDirectory();
     }
 
 
