@@ -28,7 +28,7 @@ public class HazardousArea : Hazard
     {
         if(looking && checkTime <= maxCheckTime)
         {
-            checkTime += Time.deltaTime;
+            checkTime += Time.deltaTime * 2;
         }
     }
 

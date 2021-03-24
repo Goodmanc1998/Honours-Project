@@ -23,11 +23,26 @@ public class DisplaySavingData : MonoBehaviour
         
     }
 
-    public void displayLoadData()
+    public void displayTest()
+    {
+        displayLoadData("ConnorTestScene");
+    }
+
+    public void displayHazardOne()
+    {
+        displayLoadData("HazardSceneOne");
+    }
+
+    public void displayHazardTwo()
+    {
+        displayLoadData("HazardSceneTwo");
+    }
+
+    public void displayLoadData(string dataName)
     {
         removeChildren();
 
-        currSaves = SavingToXML.LoadData("ConnorTestScene");
+        currSaves = SavingToXML.LoadData(dataName);
 
         for (int i = 0; i < currSaves.Count; i++)
         {

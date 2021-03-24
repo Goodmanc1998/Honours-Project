@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviour
 
     public void UpdatePlayerScore(Hazards currHazard, int newAmount)
     {
+        
+
         switch(currHazard)
         {
             case Hazards.Developing:
