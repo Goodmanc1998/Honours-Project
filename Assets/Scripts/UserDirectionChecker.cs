@@ -7,7 +7,7 @@ public class UserDirectionChecker : MonoBehaviour
 
     public Transform cameraTransform;
 
-    [Range(0, 1)]
+    [Range(0, 360)]
     public float frontViewAngle;
 
     public float leftViewTime;
@@ -29,11 +29,11 @@ public class UserDirectionChecker : MonoBehaviour
     void Update()
     {
 
-        if(cameraTransform.rotation.y < transform.rotation.y - frontViewAngle)
+        if (cameraTransform.eulerAngles.y < transform.parent.eulerAngles.y - frontViewAngle)
         {
             leftViewTime += Time.deltaTime;
         }
-        else if(cameraTransform.rotation.y > transform.rotation.y + frontViewAngle)
+        else if(cameraTransform.eulerAngles.y > transform.parent.eulerAngles.y + frontViewAngle)
         {
             rightViewTime += Time.deltaTime;
         }
