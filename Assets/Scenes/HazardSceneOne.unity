@@ -20838,6 +20838,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1091979805}
     m_Modifications:
+    - target: {fileID: 1786953573, guid: 67d1b31409edf0848a495e38dc6d0ea0, type: 3}
+      propertyPath: frontViewAngle
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1627644330380281034, guid: 67d1b31409edf0848a495e38dc6d0ea0,
         type: 3}
       propertyPath: m_Name
